@@ -1,0 +1,20 @@
+#!ipxe
+
+goto ${menu} ||
+
+:custom_menu
+menu Luka45 custom menu
+item --gap OS:
+item win ${space} WIN
+item pes ${space} HirenPE
+choose menu || goto custom_exit
+echo ${cls}
+goto ${menu} ||
+goto change_menu
+
+:change_menu
+chain --autofree https://raw.githubusercontent.com/Luka45-git/netboot.xyz-custom/master/${menu}.ipxe || goto error
+goto custom_menu
+
+:custom_exit
+exit 0
